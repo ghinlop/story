@@ -1,0 +1,16 @@
+mixin navli(url, check, name, dropdown = null, icon = null, liclass = null, aclass = null)
+    if !url
+        -url = check
+    if dropdown
+        li.admin-dropdown(class=liclass, v-on:click.stop="submenu($event)", v-on:mouseleave="removesubmenu($event)")
+            a(href=url, class=aclass, class=[request.match([check, dropdown]) ? 'active' : ''])
+                if icon
+                    span(class=icon)
+                span=name
+            block
+    else
+        li(class=liclass)
+            a(href=url, class=aclass, class=[request.match(check) ? 'active' : ''])
+                if icon
+                    span(class=icon)
+                span=name

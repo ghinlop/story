@@ -1,0 +1,20 @@
+extends ./layout.pug
+
+block content
+    .auth
+        .container.py-lg-5.py-md-4.py-3
+            .row
+                .col-md-4.offset-md-4
+                    .auth-box.rounded.p-4
+                        a(href="/").d-block.text-center
+                            img(src=assetsUrl('images/logo.png'), alt="")
+                        form(action="", method="post")
+                            !=csrfField()
+                            .form-group
+                                input#email.form-control(type="text" name="email" placeholder="Email Address")
+                            .form-group
+                                input#password.form-control(type="password" name="password" placeholder="Password")
+                            .form-group
+                                button(type="submit").btn.btn-info.btn-block Login
+                            .d-block.text-center
+                                a(href=route('register.get')) Register

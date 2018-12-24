@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        meta(http-equiv="X-UA-Compatible", content="ie=edge")
+        link(rel="shortcut icon", href=assetsUrl('images/favicon.ico'), type="image/x-icon")
+        !=style('css/fontisto/fontisto.min.css')
+        !=style('css/dashboard.css')
+        title
+
+        block head
+    body
+        #app
+            .bg-dashboard.py-3
+                .container-fluid
+                    .rounded-2x.overflow-hidden
+                        header.bg-white
+                            .header-top.d-flex.align-items-center
+                                .col-md-3
+                                    a.d-inline-block.header-logo(href=route('admin.index'))
+                                        img(src=assetsUrl('images/logo.png'), alt="")
+                                .col-md-9.text-md-right
+                                    .d-inline-flex.align-items-center
+                                        .header-search
+                                            form(action="", method="post")
+                                                div.header-form_search.mr-md-2
+                                                    input#header_search.form-control.form-control-sm
+                                                    label.fi.fi-search.fi-stack.ellipse(for="header_search")
+                                        .header-avatar.d-inline-flex.align-items-center.admin-dropdown(v-on:click.prevent="submenu($event)", v-on:mouseleave="removesubmenu($event)")
+                                            .header-avatar_wrap
+                                                img(src=assetsUrl('images/avatar_demo.jpg'), alt="")
+                                            span.px-1 ghinlop
+                                            span.fi.fi-angle-down
+                                            .dropdown-content.right
+                                                ul.nolist.rounded.overflow-hidden
+                                                    li
+                                                        a(href="#") Profile
+                                                    li
+                                                        a(href="#") Change Password
+                                                    li
+                                                        a(href="#") Logout
+                            nav.header-nav
+                                include ./components/nav.pug
+
+
+                        main
+                            .container-fluid.py-3
+                                .light.placeholder.pb-2
+                                    .breadcrumb
+                                        a(href="#") Home
+                                        a(href="#") Category
+                                        a(href="#") Item
+                                block content
+        !=script('js/app.js')
+        block foot

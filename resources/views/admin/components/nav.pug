@@ -1,0 +1,13 @@
+include ../mixin/navli.pug
+ul.nolist.d-md-inline-flex.d-block
+        +navli(null, route('admin.index'), 'Dasboard')
+        +navli('#', route('admin.post'),  'Posts', [route('admin.post'), route('admin.post.add')])
+            .dropdown-content.center
+                ul.nolist
+                    +navli(null, route('admin.post'), 'Post Manages')
+                    +navli(null, route('admin.post.add'), 'New Post')
+        +navli('#', route('admin.cate'), 'Categories & Tags', [route('admin.cate'), route('admin.tags')])
+            .dropdown-content.center
+                ul.nolist
+                    +navli(null, route('admin.cate'), 'Categories Manages')
+                    +navli(null, route('admin.tags'), 'Tags Manages')
